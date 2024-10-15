@@ -30,13 +30,17 @@ function mostrarCompras() {
          li.classList.add("list-group-item", "d-flex", "justify-content-between", "align-items-center");
          if (item.comprado) {
             li.classList.add("comprado", "bg-success-subtle");
-        }
+        }if
+            (item.noComprado) {
+                li.classList.add("noComprado", "bg-danger-subtle");
+            }
 
         li.innerHTML = `
             ${item.nombre.toUpperCase()}
             <div>
-                <button class="btn btn-success btn-sm me-2" onclick="marcarComoComprado(${index})"><i class="bi bi-check-circle"></i></button>
-                <button class="btn btn-danger btn-sm" onclick="eliminarProducto(${index})"><i class="bi bi-trash3"></i></button>
+                <button class="btn btn-success btn-sm" onclick="marcarComoComprado(${index})"><i class="bi bi-check-circle"></i></button>
+                <button class="btn btn-danger btn-sm" onclick="marcarComoNoComprado(${index})"><i class="bi bi-x-circle"></i></button>
+                <button class="btn btn-secondary border border-secondary btn-sm" onclick="eliminarProducto(${index})"><i class="bi bi-trash3"></i></button>
             </div>
         `;
 
@@ -47,6 +51,11 @@ function mostrarCompras() {
 
 function marcarComoComprado(index) {
     compras[index].comprado = !compras[index].comprado;
+    guardarCompras();
+    mostrarCompras();
+}
+function marcarComoNoComprado(index) {
+    compras[index].noComprado = !compras[index].noComprado;
     guardarCompras();
     mostrarCompras();
 }

@@ -13,3 +13,8 @@ body{
     text-decoration: line-through;
     color: green;
   }
+
+.noComprado {
+    text-decoration: line-through;
+    color: red;
+  }
